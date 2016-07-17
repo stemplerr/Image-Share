@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+}
+
+@using Images.Data;
+
+<div class="well" style="width:500px;">
+    <form action="/authentication/login" method="post">
+        <input class="form-control" name="username" placeholder="Username" style="padding-bottom: 15px;" type="text" />
+        <br />
+        <input class="form-control" name="password" placeholder="Password" type="password" />
+        <br />
+        <button class="btn btn-success">Log In</button>
+    </form>
+</div>
+

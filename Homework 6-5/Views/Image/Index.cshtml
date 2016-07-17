@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using Images.Data;
+@model Homework_6_5.Models.ImageViewModel
+
+    
+    <div class="well" style="width: 500px;">
+        @if (!Model.isAuthenticated)
+        { 
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/authentication/login" class="btn btn-info " >Log In</a>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/authentication/signup" class="btn btn-info ">Sign Up</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h2>Welcome back, @Model.UserName</h2>
+            <a href="/authentication/signout" class="btn btn-info">Sign Out</a>
+        }
+    </div>
+    
+    <div class="well" style="width: 500px;">
+        <form method="post" action="/image/UploadImage" enctype="multipart/form-data">
+            <div class="row">
+                <input type="hidden" name="DateUploaded" value="@DateTime.Now" />
+                <input type="text" class="form-control" placeholder="Your Name" name="UserName">
+            </div>
+            <hr />
+            <div class="row">
+                <input type="file" name="image">
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="well" style="display:inline-block; margin: 30px;">
+        <h1>Most Popular Images</h1>
+        <table class="table table-borderd ">
+            <tr>
+                <th>User Name</th>
+                <th>Image</th>
+                <th>Date Uploaded</th>
+                <th>Hits</th>
+                <th>Likes</th>
+            </tr>
+            @foreach (ImageWithLikes i in Model.MostPopular)
+            {
+                <tr>
+                    <td>@i.Image.UserName</td>
+                    <td><a href="/image/showimage?id=@i.Image.Id"><img src="~/Images/@i.Image.ImageFileName" width="200"/></a></td>
+                    <td>@i.Image.DateUploaded.ToShortDateString()</td>
+                    <td>@i.Image.Hits</td>
+                    <td>@i.LikesCount</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="well" style="display:inline-block; margin: 30px;">
+        <h1>Most Recent Images</h1>
+        <table class="table table-borderd ">
+            <tr>
+                <th>User Name</th>
+                <th>Image</th>
+                <th>Date Uploaded</th>
+                <th>Hits</th>
+            </tr>
+            @foreach (ImageWithLikes image in Model.MostRecent)
+            {
+                <tr>
+                    <td>@image.Image.UserName</td>
+                    <td><img src="~/Images/@image.Image.ImageFileName" width="200" /></td>
+                    <td>@image.Image.DateUploaded.ToShortDateString()</td>
+                    <td>@image.Image.Hits</td>
+                    <td>@image.LikesCount</td>
+                </tr>
+            }
+        </table>
+    </div>

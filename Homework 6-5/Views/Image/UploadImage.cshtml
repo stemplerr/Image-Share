@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "UploadImage";
+}
+@model Homework_6_5.Models.LinkViewModel
+@using Images.Data;
+<div class="container">
+    <h2>Thank you, @Model.Image.UserName, for uploading a picture! <br /> See your picture here:  
+        <a href="@Model.HostName/image/showimage?id=@Model.Image.Id">@Model.HostName/image/showimage?id=@Model.Image.Id</a> 
+    </h2>
+</div>

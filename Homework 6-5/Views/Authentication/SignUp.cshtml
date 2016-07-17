@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+
+@using Images.Data;
+
+<div class="well" style="width:500px;">
+    <form action="/authentication/signup" method="post">
+        <input type="text" class="form-control"placeholder="First Name" name="firstname" />
+        <br />
+        <input type="text" class="form-control" placeholder="Last Name" name="lastname" />
+        <br />
+        <input type="text" class="form-control"  placeholder="Username" name="username" />
+        <br />
+        <input type="password" class="form-control"  id="password1"placeholder="Password" name="password1" />
+        <br />
+        <input type="password" class="form-control" placeholder="Re-Type Password" id="password2"name="password2" />
+        <br />
+        <button class="btn btn-warning "style="margin-bottom:15px;" type="button" id="check-password-button">Check if Password Matches</button>
+        <span id="check-password-message"></span>
+        <br />
+        <button class="btn btn-success" >Sign Up</button>
+    </form>
+</div>
+@section scripts
+{
+<script src="~/Scripts/Index.js"></script>
+}
+

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "ShowImage";
+}
+@model Homework_6_5.Models.ShowImageViewModel
+@using System.Web.Security;
+@using Images.Data;
+<div class="container">
+    <h1>Image uploaded by @Model.Image.UserName on @Model.Image.DateUploaded.ToShortDateString()</h1>
+    <br />
+    <img src="~/Images/@Model.Image.ImageFileName" width="300"/>
+    <h1>Views: @Model.Image.Hits</h1>
+    <h1>Likes: @Model.Likes</h1>
+    @if(Model.isAuthenticated)
+    {
+        if(Model.hasUserLiked)
+        {
+            <img src="~/Images/likedheart.png" width="150"/>
+        }
+        else
+        {
+            <button data-image-id="@Model.Image.Id" id="like-button"class="btn btn-warning">Like</button>
+        }
+    }
+</div>
