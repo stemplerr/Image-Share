@@ -71,7 +71,7 @@ namespace Homework_6_5.Controllers
             UserManager um = new UserManager(Properties.Settings.Default.ConnString);
             User u = um.GetUser(User.Identity.Name);
             manager.AddImageLike(u.Id, imageid);
-            return Json("foobar");
+            return Redirect("/image/showimage?id=" + imageid);
         }
 
     }

@@ -9,11 +9,4 @@
             $('#check-password-message').text('   Try again!');
         }
     });
-
-    $('#like-button').on('click', function () {
-        $.get("/image/likeimage", function (foobar) {
-            $('#like-button').prop('disabled');
-        });
-        
-    });
 });

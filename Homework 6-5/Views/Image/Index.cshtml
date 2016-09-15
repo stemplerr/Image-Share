@@ -82,7 +82,7 @@
             {
                 <tr>
                     <td>@image.Image.UserName</td>
-                    <td><img src="~/Images/@image.Image.ImageFileName" width="200" /></td>
+                    <td><a href="/image/showimage?id=@image.Image.Id"><img src="~/Images/@image.Image.ImageFileName" width="200" /></a></td>
                     <td>@image.Image.DateUploaded.ToShortDateString()</td>
                     <td>@image.Image.Hits</td>
                     <td>@image.LikesCount</td>
